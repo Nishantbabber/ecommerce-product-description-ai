@@ -1,0 +1,79 @@
+.edit-form-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.edit-form div {
+    margin-bottom: 15px;
+}
+
+.edit-form input,
+.edit-form textarea {
+    width: 96%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.edit-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.edit-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.edit-form button:hover {
+    background-color: #0056b3;
+}
+
+.edit-form p {
+    font-size: 18px;
+    color: #555;
+}
+
+.edit-form input[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.advanced-toggle {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.advanced-info {
+    padding-top: 10px;
+    padding-left: 10px;
+    margin: 0;
+    font-size: 18px;
+    color: #555;
+}
+
+.edit-form .back-button {
+    width: 96%;
+}

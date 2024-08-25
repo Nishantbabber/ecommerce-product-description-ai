@@ -1,0 +1,121 @@
+/* Finalize Description Modal Styles */
+.finalize-description-modal .modal-dialog {
+    max-width: 500px;
+    margin: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1050;
+    width: 90%;
+}
+
+.finalize-description-modal .modal-content {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff; /* Ensure the modal background is white */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Add a shadow for depth */
+}
+
+.finalize-description-modal .modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.finalize-description-modal .modal-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.finalize-description-modal .modal-header .close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.finalize-description-modal .modal-header .close:before {
+    content: '\00d7';
+    display: block;
+}
+
+.finalize-description-modal .modal-body {
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    color: #333; /* Ensure text color is dark and readable */
+}
+
+.finalize-description-modal .modal-footer {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+.modal-footer button {
+    margin-top: 0px;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-secondary {
+    background-color: #dc3545;
+}
+
+.btn-secondary:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+.btn-success {
+    background-color: #28a745;
+}
+.btn-success:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+/* Overlay background */
+.finalize-description-modal .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5); /* Darken background when modal is open */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1040;
+}
+
+/* Ensure modal is above overlay */
+.finalize-description-modal .modal {
+    z-index: 1050;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .finalize-description-modal .modal-dialog {
+        max-width: 100%;
+        margin: auto;
+    }
+    .finalize-description-modal .modal-body {
+        max-height: 300px;
+    }
+}
