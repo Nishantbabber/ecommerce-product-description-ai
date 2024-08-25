@@ -9,12 +9,12 @@ const DashboardHome = () => {
         const fetchDashboardData = async () => {
             // Fetch total users and products count from the API
             try {
-                const usersRes = await fetch(`${process.env.BACKEND_API_URL}/api/admin/users-count`, {
+                const usersRes = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/admin/users-count`, {
                     headers: {
                         'x-auth-token': localStorage.getItem('token')
                     }
                 });
-                const productsRes = await fetch(`${process.env.BACKEND_API_URL}/api/admin/products-count`, {
+                const productsRes = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/admin/products-count`, {
                     headers: {
                         'x-auth-token': localStorage.getItem('token')
                     }

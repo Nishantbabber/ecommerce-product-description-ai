@@ -13,7 +13,7 @@ const ProductManagement = () => {
     const fetchProducts = async (page = 1) => {
         setLoading(true);
         try {
-            const response = await axios.get(`${process.env.BACKEND_API_URL}/api/admin/products?page=${page}&limit=10`, {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/admin/products?page=${page}&limit=10`, {
                 headers: {
                     'x-auth-token': localStorage.getItem('token')
                 }
@@ -36,7 +36,7 @@ const ProductManagement = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this product?')) {
             try {
-                await axios.delete(`${process.env.BACKEND_API_URL}/api/admin/products/${id}`, {
+                await axios.delete(`${process.env.REACT_APP_BACKEND_API_URL}/api/admin/products/${id}`, {
                     headers: {
                         'x-auth-token': localStorage.getItem('token')
                     }

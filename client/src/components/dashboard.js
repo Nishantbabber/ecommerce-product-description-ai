@@ -20,7 +20,7 @@ function Dashboard() {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await fetch(`${process.env.BACKEND_API_URL}/api/user/profile`, {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/user/profile`, {
           method: 'GET',
           headers: { 'x-auth-token': token },
         });
@@ -57,7 +57,7 @@ function Dashboard() {
   const handleEmailVerification = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`${process.env.BACKEND_API_URL}/api/user/verify-email`, {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/user/verify-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

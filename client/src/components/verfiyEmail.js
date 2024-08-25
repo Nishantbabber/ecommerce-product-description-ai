@@ -10,7 +10,7 @@ function VerifyEmail() {
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-        const res = await fetch(`${process.env.BACKEND_API_URL}/api/user/verify-email/${token}`, {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/user/verify-email/${token}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

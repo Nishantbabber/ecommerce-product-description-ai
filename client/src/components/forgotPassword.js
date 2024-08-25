@@ -22,7 +22,7 @@ const ForgotPassword = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const res = await fetch(`${process.env.BACKEND_API_URL}/api/user/forgot-password`, {
+            const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/user/forgot-password`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

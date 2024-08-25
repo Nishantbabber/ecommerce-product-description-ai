@@ -5,7 +5,7 @@ function SubscriptionInfo() {
 
   useEffect(() => {
     const fetchSubscription = async () => {
-      const res = await fetch(`${process.env.BACKEND_API_URL}/api/user/profile`, {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/user/profile`, {
         headers: { 'x-auth-token': localStorage.getItem('token') },
       });
       const data = await res.json();

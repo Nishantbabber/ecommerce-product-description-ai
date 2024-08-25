@@ -10,7 +10,7 @@ const UserManagement = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch(`${process.env.BACKEND_API_URL}/api/admin/users`, {
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/admin/users`, {
                     headers: {
                         'x-auth-token': localStorage.getItem('token')
                     }
@@ -27,7 +27,7 @@ const UserManagement = () => {
 
     const handleDeleteUser = async (userId) => {
         try {
-            await fetch(`${process.env.BACKEND_API_URL}/api/admin/users/${userId}`, {
+            await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/admin/users/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'x-auth-token': localStorage.getItem('token')
@@ -47,7 +47,7 @@ const UserManagement = () => {
 
     const handleSaveChanges = async () => {
         try {
-            await fetch(`${process.env.BACKEND_API_URL}/api/admin/users/${editingUser._id}`, {
+            await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/admin/users/${editingUser._id}`, {
                 method: 'PUT',
                 headers: {
                     'x-auth-token': localStorage.getItem('token'),

@@ -51,7 +51,7 @@ const ProductForm = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        const res = await fetch(`${process.env.BACKEND_API_URL}/api/products`, {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/products`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

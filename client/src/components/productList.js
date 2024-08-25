@@ -35,7 +35,7 @@ const ProductList = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             setLoading(true);
-            const res = await fetch(`${process.env.BACKEND_API_URL}/api/products`, {
+            const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/products`, {
                 headers: {
                     'x-auth-token': localStorage.getItem('token')
                 }
@@ -52,7 +52,7 @@ const ProductList = () => {
     const enhanceDescription = async (id, existingDescription = null) => {
         setLoadingEnhance(true);
         try {
-            const res = await fetch(`${process.env.BACKEND_API_URL}/api/products/enhance/${id}`, {
+            const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/products/enhance/${id}`, {
                 method: 'POST',
                 headers: {
                     'x-auth-token': localStorage.getItem('token'),
@@ -80,7 +80,7 @@ const ProductList = () => {
 
     const saveDescription = async (updatedDescription) => {
         try {
-            const res = await fetch(`${process.env.BACKEND_API_URL}/api/products/${enhancedProduct._id}`, {
+            const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/products/${enhancedProduct._id}`, {
                 method: 'PUT',
                 headers: {
                     'x-auth-token': localStorage.getItem('token'),
@@ -109,7 +109,7 @@ const ProductList = () => {
     const previewEnhancedDescription = async (id) => {
         setLoadingPreview(true);
         try {
-            const res = await fetch(`${process.env.BACKEND_API_URL}/api/products/preview/${id}`, {
+            const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/products/preview/${id}`, {
                 method: 'POST',
                 headers: {
                     'x-auth-token': localStorage.getItem('token'),
@@ -142,7 +142,7 @@ const ProductList = () => {
 
     const deleteProduct = async (id) => {
         try {
-            const res = await fetch(`${process.env.BACKEND_API_URL}/api/products/${id}`, {
+            const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/products/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'x-auth-token': localStorage.getItem('token')

@@ -24,7 +24,7 @@ const EditProduct = () => {
 
     useEffect(() => {
         const fetchProduct = async () => {
-            const res = await fetch(`${process.env.BACKEND_API_URL}/api/products/${id}`, {
+            const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/products/${id}`, {
                 headers: {
                     'x-auth-token': localStorage.getItem('token')
                 }
@@ -49,7 +49,7 @@ const EditProduct = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await fetch(`${process.env.BACKEND_API_URL}/api/products/${id}`, {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/products/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

@@ -24,7 +24,7 @@ const AccountManagement = () => {
 
     // Fetch user profile data to prefill the form
     const fetchProfile = async () => {
-      const res = await fetch(`${process.env.BACKEND_API_URL}/api/user/profile`, {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/user/profile`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const AccountManagement = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`${process.env.BACKEND_API_URL}/api/users/profile`, {
+    const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/users/profile`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
