@@ -58,6 +58,7 @@ function Login() {
     <div className="login-container">
       <div className="left-section">
         <div className="welcome-message">
+          <h1>{process.env.REACT_APP_BACKEND_API_URL}</h1>
           <h2>Welcome to AIProductWriter</h2>
           <p>New to AIProductWriter? Register here to experience the best AI tool for product design.</p>
           <a href="/register" className="register-button">Register</a>
