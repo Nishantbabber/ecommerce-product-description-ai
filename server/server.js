@@ -8,7 +8,11 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://ecommerce-product-description-ai-xqjz.vercel.app/', // Replace with your actual React app URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json());
 
 // MongoDB Connection
