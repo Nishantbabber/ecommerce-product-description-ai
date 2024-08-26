@@ -4,7 +4,7 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 const adminAuth = require('../middleware/adminAuth');
 const User = require('../models/users');
-const Product = require('../models/Product');
+const Product = require('../models/product');
 
 
 // Route to delete a user (Admin only)
