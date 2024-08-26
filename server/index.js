@@ -9,10 +9,12 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'https://ecommerce-product-description-ai-xqjz.vercel.app/', // Replace with your actual React app URL
+  origin: 'https://ecommerce-product-description-ai-xqjz.vercel.app', // Replace with your actual React app URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: 'Content-Type,Authorization'
 }));
+app.options('*', cors());
+
 app.use(express.json());
 
 // MongoDB Connection
