@@ -9,10 +9,11 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'https://ecommerce-product-description-ai-xqjz.vercel.app', // Replace with your actual React app URL
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
+
 app.options('*', cors());
 
 app.use(express.json());
