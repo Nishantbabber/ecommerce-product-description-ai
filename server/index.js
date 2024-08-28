@@ -11,7 +11,7 @@ const app = express();
 app.use(cors({
   origin: 'https://ecommerce-product-description-ai-xqjz.vercel.app', 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization', 'x-auth-token'],
   credentials: true
 }));
 
