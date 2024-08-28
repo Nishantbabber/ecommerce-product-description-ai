@@ -29,6 +29,8 @@ body {
 }
 
 .dashboard-content {
+    flex-grow: 1;
+    background-color: #f8f9fa;
     padding-top: 150px !important;
 }
 

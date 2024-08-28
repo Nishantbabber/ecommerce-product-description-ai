@@ -7,10 +7,12 @@ import 'react-toastify/dist/ReactToastify.css';
 function Login() {
   const [emailOrUsername, setEmailOrUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       console.log(process.env.REACT_APP_BACKEND_API_URL)
       const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/user/login`, {
@@ -45,6 +47,7 @@ function Login() {
     } catch (err) {
       showToast(err || 'Login error', 'error');
     }
+    setLoading(false);
   };
   const showToast = (message, type) => {
     toast.dismiss(); // Dismiss any existing toasts
@@ -96,6 +99,14 @@ function Login() {
           </div>
         </form>
       </div>
+      {(loading) && (
+        <div className="loading-overlay">
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
+            <div className="loading-text">Loading...</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
