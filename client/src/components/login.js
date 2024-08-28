@@ -25,7 +25,7 @@ function Login() {
         localStorage.setItem('token', data.token);
 
         // Fetch the user profile to get the role
-        const profileRes = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}api/user/profile`, {
+        const profileRes = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/user/profile`, {
           headers: {
             'Content-Type': 'application/json',
             'x-auth-token': data.token,
