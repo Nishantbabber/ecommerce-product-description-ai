@@ -20,8 +20,9 @@ function Register() {
         body: JSON.stringify({ email, password, username }),
       });
       const data = await res.json();
-      if (data.msg === 'User created successfully') {
-        navigate('/');
+      if (res.ok) {
+        showToast('User created successfully', 'success');
+        setTimeout(() => navigate('/'), 2000);
       } else {
         showToast(data.msg, 'error');
       }
