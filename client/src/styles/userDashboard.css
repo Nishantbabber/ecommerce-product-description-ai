@@ -47,7 +47,7 @@ body {
     gap: 15px;
 }
 
-.header-right .add-product-button {
+.header-right .add-product-button-header {
     padding: 12px 20px; /* Uniform padding for consistency */
     border-radius: 5px;
     font-size: 1rem;
@@ -59,12 +59,12 @@ body {
     margin-bottom: 0px;
 }
 
-.add-product-button {
+.add-product-button-header {
     background-color: #28a745;
     font-weight: bold;
 }
 
-.add-product-button:hover {
+.add-product-button-header:hover {
     background-color: #218838;
 }
 
@@ -179,7 +179,7 @@ body {
         width: 100%;
     }
 
-    .add-product-button,
+    .add-product-button-header,
     .logout-button {
         width: 100%;
         font-size: 0.875rem;
@@ -210,7 +210,7 @@ body {
         font-size: 1.5rem;
     }
 
-    .add-product-button,
+    .add-product-button-header,
     .logout-button {
         font-size: 0.875rem;
         padding: 8px 16px;

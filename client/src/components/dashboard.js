@@ -4,8 +4,12 @@ import ProductList from './productList';
 import '../styles/userDashboard.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Joyride from 'react-joyride';
+
 
 function Dashboard() {
+  const [run, setRun] = useState(false);
+  const [steps, setSteps] = useState([]);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
     username: '',
@@ -83,6 +87,33 @@ function Dashboard() {
       toast.error(message);
     }
   };
+
+  useEffect(() => {
+    const isFirstLogin = !localStorage.getItem('isFirstLogin');
+    const isRegistered = localStorage.getItem('isRegistered') === 'true';
+
+    if (isFirstLogin && isRegistered) {
+      // Define steps only after confirming it's the first login
+      setSteps([
+        {
+          target: '.add-product-button-header',
+          content: 'This is where you start your journey!',
+        },
+        {
+          target: '.dashboard-content',
+          content: 'This is your dashboard where you can see everything!',
+        },
+        {
+          target: '.user-dropdown-button',
+          content: 'Click Here For Account Management',
+        },
+      ]);
+
+      setRun(true); // Automatically start the tour
+      localStorage.setItem('isFirstLogin', 'false'); // Mark as visited
+    }
+  }, []);
+  
   // Calculate the trial end date based on createdAt
   const trialEndDate = new Date(new Date(userData.createdAt).getTime() + 7 * 24 * 60 * 60 * 1000);
   const daysLeft = Math.ceil((trialEndDate - new Date()) / (1000 * 60 * 60 * 24));
@@ -111,7 +142,7 @@ function Dashboard() {
           )}
         </div>
         <div className="header-right">
-          <a href="/productForm" className="add-product-button">Add Product</a>
+          <a href="/productForm" className="add-product-button-header">Add Product</a>
           <div className="user-dropdown">
             <button className="user-dropdown-button" onClick={toggleDropdown}>
               {userData.username}
@@ -138,6 +169,23 @@ function Dashboard() {
       <footer className="dashboard-footer">
         <p>&copy; {new Date().getFullYear()} AIProductWriter All rights reserved.</p>
       </footer>
+      <Joyride
+      steps={steps}
+      run={run}
+      continuous
+      showSkipButton
+      showProgress
+      styles={{
+        options: {
+          zIndex: 1100, // Ensure tooltips appear above the header
+        },
+      }}
+      callback={(data) => {
+        if (data.status === 'finished' || data.status === 'skipped') {
+          setRun(false); // Stop the tour when finished or skipped
+        }
+      }}
+    />
     </div>
   );
 }

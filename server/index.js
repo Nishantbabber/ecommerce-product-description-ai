@@ -15,9 +15,16 @@ app.use(cors({
   credentials: true
 }));
 
+// app.use(cors());  // Add this line for local
 app.use(express.json());
 
 // MongoDB Connection
+// for local
+// mongoose.connect(process.env.MONGO_URI_local) 
+//   .then(() => console.log('MongoDB Connected'))
+//   .catch(err => console.log('MongoDB connection error:', err));
+
+// For prod
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log('MongoDB connection error:', err));

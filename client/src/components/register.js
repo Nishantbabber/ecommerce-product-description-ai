@@ -22,7 +22,8 @@ function Register() {
       const data = await res.json();
       if (res.ok) {
         showToast('User created successfully', 'success');
-        setTimeout(() => navigate('/'), 2000);
+        localStorage.setItem('isRegistered', 'true');
+        setTimeout(() => navigate('/'), 1000);
       } else {
         showToast(data.msg, 'error');
       }

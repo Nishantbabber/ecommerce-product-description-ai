@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Use useNavigate instead of useHistory
+import { useNavigate } from 'react-router-dom';
 import '../styles/productListing.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import FinalizeDescriptionModal from './finalizeDescriptionModal'; // Make sure the path is correct
+import FinalizeDescriptionModal from './finalizeDescriptionModal';
 import { Modal, Button } from 'react-bootstrap';
-
+import Joyride from 'react-joyride';
 
 
 const ProductList = () => {
@@ -21,6 +21,8 @@ const ProductList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [showModal, setShowModal] = useState(false);
     const [enhancedProduct, setEnhancedProduct] = useState(null);
+    const [runTour, setRunTour] = useState(false); // State to control the tour
+    const [steps, setSteps] = useState([]); // State to manage the tour steps
     const productsPerPage = 9;
 
     const showToast = (message, type) => {
@@ -44,6 +46,11 @@ const ProductList = () => {
             const data = await res.json();
             setProducts(data);
             setLoading(false);
+
+            if (data.length === 1 && !localStorage.getItem('isFirstProductTourShown')) {
+                startTour();
+                localStorage.setItem('isFirstProductTourShown', 'true');
+            } 
         };
 
         fetchProducts();
@@ -193,6 +200,28 @@ const ProductList = () => {
         }
     }
 
+    const startTour = () => {
+        setSteps([
+            {
+                target: '.edit-button',
+                content: 'Click here to edit your product.',
+            },
+            {
+                target: '.delete-button',
+                content: 'Click here to delete your product.',
+            },
+            {
+                target: '.enhance-preview-buttons button:first-child',
+                content: 'Click here to enhance your product description.',
+            },
+            {
+                target: '.enhance-preview-buttons button:last-child',
+                content: 'Click here to preview the enhanced product description.',
+            },
+        ]);
+        setRunTour(true); // Start the tour
+    };
+
     return (
         <div>
             <div className="search-filter-wrapper">
@@ -311,6 +340,23 @@ const ProductList = () => {
                 )}
 
             </div>
+            <Joyride
+                steps={steps}
+                run={runTour}
+                continuous
+                showSkipButton
+                showProgress
+                styles={{
+                    options: {
+                        zIndex: 10000, // Ensure the tour is above other elements
+                    },
+                }}
+                callback={(data) => {
+                    if (data.status === 'finished' || data.status === 'skipped') {
+                        setRunTour(false); // Stop the tour after it's finished or skipped
+                    }
+                }}
+            />
         </div>
     );
 };
