@@ -8,11 +8,13 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/api/user/register`, {
         method: 'POST',
@@ -30,6 +32,7 @@ function Register() {
     } catch (err) {
       showToast(err, 'error');
     }
+    setLoading(false);
   };
 
   const showToast = (message, type) => {
@@ -91,6 +94,14 @@ function Register() {
           </button>
         </form>
       </div>
+      {(loading) && (
+        <div className="loading-overlay">
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
+            <div className="loading-text">Loading...</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
