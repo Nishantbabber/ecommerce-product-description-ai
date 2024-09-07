@@ -139,7 +139,7 @@ body {
 
 /* Button Styles */
 .buttons button {
-    background-color: #007bff;
+    background-color: #0056b3;
     width: 100%;
     margin-top: 0px;
     color: white;
@@ -151,7 +151,7 @@ body {
 }
 
 .buttons button:hover {
-    background-color: #0056b3;
+    background-color: #007bff;
     transform: translateY(-2px);
 }
 
@@ -304,10 +304,10 @@ body {
 .pagination button {
     padding: 10px 15px;
     margin: 0 5px;
-    border: 1px solid #007bff;
+    border: 1px solid #0056b3;
     border-radius: 4px;
     background-color: #fff;
-    color: #007bff;
+    color: #0056b3;
     cursor: pointer;
     transition: background-color 0.3s;
 }

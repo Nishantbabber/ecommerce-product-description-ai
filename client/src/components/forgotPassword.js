@@ -33,7 +33,7 @@ const ForgotPassword = () => {
             const data = await res.json();
             if (res.ok) {
                 showToast('Password reset link sent to your email if the account exists.', 'success');
-                setTimeout(() => navigate('/'), 2000);
+                setTimeout(() => navigate('/login'), 2000);
             } else {
                 showToast(data.msg || 'Something went wrong.', 'error');
             }

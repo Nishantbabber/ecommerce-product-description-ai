@@ -1,0 +1,109 @@
+.examples-page {
+    padding: 40px 20px;
+}
+
+.examples-page h1 {
+    text-align: center;
+    color: #0056b3;
+    margin-bottom: 40px;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    /* Ensure absolute positioned children work correctly */
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.no-image {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.product-details {
+    flex-grow: 1;
+    margin-bottom: 15px;
+    flex-direction: column;
+}
+
+.product-description {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    text-align: left;
+    overflow-y: auto;
+    max-height: 4.5em;
+    flex-grow: 1;
+    /* Allow the description to expand */
+}
+
+/* Product Meta */
+.product-meta {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-category,
+.product-price {
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: arial;
+}
+
+.import-button button {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.import-button button:hover {
+    background-color: #004494;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 425px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        /* 1 column on smaller screens */
+    }
+}

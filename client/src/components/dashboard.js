@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ProductList from './productList';
 import '../styles/userDashboard.css';
 import { toast } from 'react-toastify';
@@ -39,11 +39,11 @@ function Dashboard() {
           });
         } else {
           console.error('Failed to fetch user data');
-          navigate('/');
+          navigate('/login');
         }
       } catch (err) {
         console.error(err);
-        navigate('/');
+        navigate('/login');
       }
     };
     fetchUserData();
@@ -51,7 +51,7 @@ function Dashboard() {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/');
+    navigate('/login');
   };
 
   const toggleDropdown = () => {
@@ -113,7 +113,7 @@ function Dashboard() {
       localStorage.setItem('isFirstLogin', 'false'); // Mark as visited
     }
   }, []);
-  
+
   // Calculate the trial end date based on createdAt
   const trialEndDate = new Date(new Date(userData.createdAt).getTime() + 7 * 24 * 60 * 60 * 1000);
   const daysLeft = Math.ceil((trialEndDate - new Date()) / (1000 * 60 * 60 * 24));
@@ -125,9 +125,11 @@ function Dashboard() {
           <h1>Welcome, {userData.username}</h1>
           {userData.subscriptionStatus && (
             <p className="limit-message">
-              {userData.subscriptionStatus.status === 'trial'
+              {userData.subscriptionStatus.status === 'trial' && daysLeft >= 0
                 ? `Trial Days Remaining: ${daysLeft} ${daysLeft === 1 ? 'day' : 'days'}`
-                : 'Subscription Active'}
+                : userData.subscriptionStatus.status === 'trial' && daysLeft < 0
+                  ? 'Trial Expired'
+                  : 'Subscription Active'}
             </p>
           )}
           {userData.subscriptionStatus && (
@@ -142,7 +144,19 @@ function Dashboard() {
           )}
         </div>
         <div className="header-right">
-          <a href="/productForm" className="add-product-button-header">Add Product</a>
+          <nav>
+            <ul className="nav-links">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/examples">Examples</Link>
+              </li>
+              <li>
+                <Link to="/productForm">Add Product</Link>
+              </li>
+            </ul>
+          </nav>
           <div className="user-dropdown">
             <button className="user-dropdown-button" onClick={toggleDropdown}>
               {userData.username}
@@ -170,22 +184,22 @@ function Dashboard() {
         <p>&copy; {new Date().getFullYear()} AIProductWriter All rights reserved.</p>
       </footer>
       <Joyride
-      steps={steps}
-      run={run}
-      continuous
-      showSkipButton
-      showProgress
-      styles={{
-        options: {
-          zIndex: 1100, // Ensure tooltips appear above the header
-        },
-      }}
-      callback={(data) => {
-        if (data.status === 'finished' || data.status === 'skipped') {
-          setRun(false); // Stop the tour when finished or skipped
-        }
-      }}
-    />
+        steps={steps}
+        run={run}
+        continuous
+        showSkipButton
+        showProgress
+        styles={{
+          options: {
+            zIndex: 1100, // Ensure tooltips appear above the header
+          },
+        }}
+        callback={(data) => {
+          if (data.status === 'finished' || data.status === 'skipped') {
+            setRun(false); // Stop the tour when finished or skipped
+          }
+        }}
+      />
     </div>
   );
 }

@@ -36,7 +36,7 @@ const ResetPassword = () => {
 
             if (res.ok) {
                 showToast('Password reset successful', 'success');
-                setTimeout(() => navigate('/'), 2000);
+                setTimeout(() => navigate('/login'), 2000);
             } else {
                 showToast(data.msg || 'Something went wrong.', 'error');
             }

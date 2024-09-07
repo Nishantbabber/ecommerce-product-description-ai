@@ -25,7 +25,7 @@ function Register() {
       if (res.ok) {
         showToast('User created successfully', 'success');
         localStorage.setItem('isRegistered', 'true');
-        setTimeout(() => navigate('/'), 1000);
+        setTimeout(() => navigate('/login'), 1000);
       } else {
         showToast(data.msg, 'error');
       }
@@ -50,11 +50,13 @@ function Register() {
         <div className="welcome-message">
           <h2>Join AIProductWriter</h2>
           <p>Become a part of our community and enjoy the best AI tools for product design.</p>
-          <a href="/" className="login-button">Login</a>
+          <a href="/login" className="login-button">Login</a>
         </div>
       </div>
       <div className="right-section">
+        <a href="/">
         <h1 className="company-name">AIProductWriter</h1>
+        </a>
         <form onSubmit={handleSubmit} className="register-form">
           <div className="form-group">
             <label htmlFor="username">Username</label>

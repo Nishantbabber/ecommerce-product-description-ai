@@ -19,7 +19,7 @@ const AccountManagement = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
-      navigate('/');
+      navigate('/login');
     }
 
     // Fetch user profile data to prefill the form

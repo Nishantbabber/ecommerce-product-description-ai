@@ -11,6 +11,8 @@ import ResetPassword from './components/resetPassword';
 import VerifyEmail from './components/verfiyEmail';
 import AccountManagement from './components/userProfile'
 import AdminDashboard from './components/admin/adminDashboard';
+import Homepage from './components/homepage';
+import ExamplesPage from './components/example'
 
 
 
@@ -19,7 +21,8 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/productForm" element={<ProductForm />} />
@@ -28,7 +31,8 @@ function App() {
           <Route path="/reset-password/:token" element={<ResetPassword />} />
           <Route path="/verify/:token" element={<VerifyEmail />} />
           <Route path="/user-profile/" element={<AccountManagement />} />
-          <Route path="/admin/*" element={<AdminDashboard />} /> {/* Use a wildcard to handle nested routes */}
+          <Route path="/admin/*" element={<AdminDashboard />} />
+          <Route path='/examples' element={<ExamplesPage/>} />
         </Routes>
         <ToastContainer position="top-center" autoClose={2000} hideProgressBar={false} closeOnClick pauseOnHover rtl={false} />
       </div>

@@ -67,7 +67,9 @@ function Login() {
         </div>
       </div>
       <div className="right-section">
-        <h1 className="company-name">AIProductWriter</h1>
+        <a href="/">
+          <h1 className="company-name">AIProductWriter</h1>
+        </a>
         <form onSubmit={handleSubmit} className="login-form">
           <div className="form-group">
             <label htmlFor="emailOrUsername">Email or Username</label>

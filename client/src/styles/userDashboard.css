@@ -14,7 +14,7 @@ body {
 
 /* Header */
 .dashboard-header {
-    background-color: #007bff;
+    background-color: #0056b3;
     color: white;
     padding: 15px 20px;
     display: flex;
@@ -47,7 +47,7 @@ body {
     gap: 15px;
 }
 
-.header-right .add-product-button-header {
+.header-right .add-product-button-header,.examples-link {
     padding: 12px 20px; /* Uniform padding for consistency */
     border-radius: 5px;
     font-size: 1rem;
@@ -59,12 +59,15 @@ body {
     margin-bottom: 0px;
 }
 
-.add-product-button-header {
+.add-product-button-header,.examples-link {
     background-color: #28a745;
     font-weight: bold;
 }
 
 .add-product-button-header:hover {
+    background-color: #218838;
+}
+.examples-link:hover {
     background-color: #218838;
 }
 
@@ -156,7 +159,7 @@ body {
 }
 
 .verify-email {
-    color: #007bff;
+    color: #0056b3;
     cursor: pointer;
 }
 
@@ -171,7 +174,6 @@ body {
 @media (max-width: 768px) {
     .dashboard-header {
         flex-direction: column;
-        align-items: flex-start;
     }
 
     .header-right {
