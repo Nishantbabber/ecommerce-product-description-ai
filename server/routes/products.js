@@ -10,7 +10,7 @@ const checkSubscriptionLimits = require('../middleware/checkSubscriptionLimits')
 // Create a product
 
 router.post('/', auth, checkSubscriptionLimits, async (req, res) => {
-    const { title, description, category, price, imageUrl, targetAudience, features, usageScenarios, tone, keywords, benefits, comparableProducts } = req.body;
+    const { title, description, category, price, currency, imageUrl, targetAudience, features, usageScenarios, tone, keywords, benefits, comparableProducts } = req.body;
 
     try {
         const user = await User.findById(req.user.id);
@@ -33,6 +33,7 @@ router.post('/', auth, checkSubscriptionLimits, async (req, res) => {
             description,
             category,
             price,
+            currency,
             imageUrl,
             targetAudience,
             features,
@@ -108,7 +109,7 @@ router.get('/:id', auth, async (req, res) => {
 
 // updating a single product by its ID
 router.put('/:id', auth, async (req, res) => {
-    const { title, description, category, price, imageUrl, targetAudience, features, usageScenarios, tone, keywords, benefits, comparableProducts } = req.body;
+    const { title, description, category, price, currency, imageUrl, targetAudience, features, usageScenarios, tone, keywords, benefits, comparableProducts } = req.body;
 
     try {
         let product = await Product.findById(req.params.id);
@@ -127,6 +128,7 @@ router.put('/:id', auth, async (req, res) => {
         product.description = description || product.description;
         product.category = category || product.category;
         product.price = price || product.price;
+        product.currency = currency || product.currency;
         product.imageUrl = imageUrl || product.imageUrl;
         product.targetAudience = targetAudience || product.targetAudience;
         product.features = features || product.features;

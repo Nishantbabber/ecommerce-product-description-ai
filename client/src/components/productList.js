@@ -222,6 +222,20 @@ const ProductList = () => {
         setRunTour(true); // Start the tour
     };
 
+    const currencySymbols = {
+        USD: '$',
+        EUR: '€',
+        GBP: '£',
+        JPY: '¥',
+        INR: '₹',
+        CAD: '$',
+        AUD: '$',
+        // Add more currencies as needed
+    };
+    function getCurrencySymbol(currencyCode) {
+        return currencySymbols[currencyCode] || currencyCode; // Fallback to code if symbol not found
+    }        
+
     return (
         <div>
             <div className="search-filter-wrapper">
@@ -275,7 +289,7 @@ const ProductList = () => {
                                     </div>
                                     <div className="product-meta">
                                         <p className="product-category">Category: {product.category}</p>
-                                        <p className="product-price">Price: ₹{product.price}</p>
+                                        <p className="product-price">Price: {getCurrencySymbol(product.currency)}{product.price}</p>
                                     </div>
                                     <div className="buttons">
                                         <div className="enhance-preview-buttons">

@@ -77,3 +77,32 @@
 .edit-form .back-button {
     width: 96%;
 }
+
+.edit-form .price-currency-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.edit-form .price-input {
+    width: 81% !important;
+}
+
+.edit-form .currency-dropdown {
+    width: 15%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+@media (max-width: 425px) {
+
+    .edit-form .price-input {
+        width: 71% !important;
+    }
+
+    .edit-form .currency-dropdown {
+        width: 25%;
+    }
+    
+}

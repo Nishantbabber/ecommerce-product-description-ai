@@ -10,6 +10,7 @@ const EditProduct = () => {
         description: '',
         category: '',
         price: '',
+        currency: 'USD',  // Default currency
         imageUrl: '',
         targetAudience: '',
         features: '',
@@ -67,6 +68,12 @@ const EditProduct = () => {
         navigate('/dashboard');
     };
 
+    const currencies = ['USD', 'EUR', 'GBP', 'JPY', 'INR', 'CAD', 'AUD'];  // List of supported currencies
+
+    const onCurrencyChange = (e) => {
+        setProduct({ ...product, currency: e.target.value });
+    };
+
     return (
         <div className="edit-form-container">
             <form onSubmit={handleSubmit} className="edit-form">
@@ -100,7 +107,14 @@ const EditProduct = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="price-currency-wrapper">
+                    <select name="currency" value={product.currency} onChange={onCurrencyChange} required className="currency-dropdown">
+                        {currencies.map((currency) => (
+                            <option key={currency} value={currency}>
+                                {currency}
+                            </option>
+                        ))}
+                    </select>
                     <input
                         type="text"
                         name="price"
@@ -108,8 +122,10 @@ const EditProduct = () => {
                         onChange={handlePriceChange}
                         placeholder="Price"
                         required
+                        className="price-input"
                     />
                 </div>
+
                 <div>
                     <input
                         type="text"

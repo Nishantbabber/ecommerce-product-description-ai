@@ -20,6 +20,7 @@ const ProductForm = () => {
         description: '',
         category: '',
         price: '',
+        currency: 'USD',  // Default currency
         imageUrl: '',
         targetAudience: '',
         features: '',
@@ -29,6 +30,13 @@ const ProductForm = () => {
         benefits: '',
         comparableProducts: ''
     });
+
+    const currencies = ['USD', 'EUR', 'GBP', 'JPY', 'INR', 'CAD', 'AUD'];  // List of supported currencies
+
+    const onCurrencyChange = (e) => {
+        setFormData({ ...formData, currency: e.target.value });
+    };
+
 
     const [showAdvanced, setShowAdvanced] = useState(false); // Manage advanced fields visibility
     const navigate = useNavigate();
@@ -67,6 +75,7 @@ const ProductForm = () => {
                 description: '',
                 category: '',
                 price: '',
+                currency: '',
                 imageUrl: '',
                 targetAudience: '',
                 features: '',
@@ -130,14 +139,22 @@ const ProductForm = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="price-currency-wrapper">
+                    <select name="currency" value={formData.currency} onChange={onCurrencyChange} required className="currency-dropdown">
+                        {currencies.map((currency) => (
+                            <option key={currency} value={currency}>
+                                {currency}
+                            </option>
+                        ))}
+                    </select>
                     <input
                         type="text"
                         placeholder="Price"
                         name="price"
-                        value={price}
+                        value={formData.price}
                         onChange={handlePriceChange}
                         required
+                        className="price-input"
                     />
                 </div>
                 <div>
