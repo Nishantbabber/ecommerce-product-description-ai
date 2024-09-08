@@ -68,7 +68,7 @@ const EditProduct = () => {
         navigate('/dashboard');
     };
 
-    const currencies = ['USD', 'EUR', 'GBP', 'JPY', 'INR', 'CAD', 'AUD'];  // List of supported currencies
+    const currencies = ['USD', 'EUR', 'GBP', 'JPY', 'INR', 'CAD', 'AUD', 'CNY', 'RUB'];  // List of supported currencies
 
     const onCurrencyChange = (e) => {
         setProduct({ ...product, currency: e.target.value });

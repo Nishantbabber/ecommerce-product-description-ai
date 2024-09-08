@@ -31,7 +31,7 @@ const ProductForm = () => {
         comparableProducts: ''
     });
 
-    const currencies = ['USD', 'EUR', 'GBP', 'JPY', 'INR', 'CAD', 'AUD'];  // List of supported currencies
+    const currencies = ['USD', 'EUR', 'GBP', 'JPY', 'INR', 'CAD', 'AUD', 'CNY', 'RUB'];  // List of supported currencies
 
     const onCurrencyChange = (e) => {
         setFormData({ ...formData, currency: e.target.value });

@@ -230,6 +230,8 @@ const ProductList = () => {
         INR: '₹',
         CAD: '$',
         AUD: '$',
+        CNY: '¥',
+        RUB: '₽',
         // Add more currencies as needed
     };
     function getCurrencySymbol(currencyCode) {
