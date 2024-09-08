@@ -1,40 +1,93 @@
+/* Main Header Styles */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #0056b3;
-    color: white;
-  }
-  
-  .logo a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #0056b3;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+.logo a {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav-links li a:hover {
+  text-decoration: underline;
+}
+
+/* Hide the menu toggle button on screens larger than 425px */
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: 425px) {
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
     color: white;
     font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-  }
-  
-  .nav-links li a:hover {
-    text-decoration: underline;
   }
 
-  
-  @media (max-width: 375px) {
-    .nav-links {
-      flex-direction: column;
-      gap: 10px;
-    }
+  .nav-links {
+    display: none; /* Hide nav links initially */
+    flex-direction: column;
+    position: absolute;
+    background-color: #0056b3;
+    right: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
   }
-  
+
+  /* Show navigation when menu is toggled */
+  .nav-links.show {
+    display: flex;
+  }
+
+  /* Display first and second navigation links only */
+  .nav-links li:nth-child(1),
+  .nav-links li:nth-child(2) {
+    display: block; /* Show only first and second */
+  }
+
+  /* Adjust the logo and toggle positioning */
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .logo {
+    flex: 1;
+  }
+
+  .menu-toggle {
+    align-self: flex-end;
+  }
+}
+
+@media (min-width: 426px) {
+  /* Show nav-links without toggle above 425px */
+  .nav-links {
+    display: flex;
+  }
+}

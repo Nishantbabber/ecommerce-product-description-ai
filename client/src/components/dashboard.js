@@ -19,6 +19,7 @@ function Dashboard() {
     createdAt: '',
   });
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -114,6 +115,10 @@ function Dashboard() {
     }
   }, []);
 
+  const handleToggle = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   // Calculate the trial end date based on createdAt
   const trialEndDate = new Date(new Date(userData.createdAt).getTime() + 7 * 24 * 60 * 60 * 1000);
   const daysLeft = Math.ceil((trialEndDate - new Date()) / (1000 * 60 * 60 * 24));
@@ -144,16 +149,28 @@ function Dashboard() {
           )}
         </div>
         <div className="header-right">
+            <div className="menu-toggle" onClick={handleToggle}>
+                &#9776; {/* Hamburger icon */}
+            </div>
           <nav>
-            <ul className="nav-links">
+            <ul className={`nav-links ${menuOpen ? 'show' : ''}`}>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/" onClick={handleToggle}>Home</Link>
               </li>
               <li>
-                <Link to="/examples">Examples</Link>
+                <Link to="/examples" onClick={handleToggle}>Examples</Link>
               </li>
               <li>
-                <Link to="/productForm">Add Product</Link>
+                <Link to="/productForm" onClick={handleToggle}>Add Product</Link>
+              </li>
+              <li>
+                <Link to="/contactUs" onClick={handleToggle}>Contact Us</Link>
+              </li>
+              <li className='profile'>
+                <Link to="/user-profile" onClick={handleToggle}>Profile</Link>
+              </li>
+              <li className='logout'>
+                <Link to="/login" onClick={handleLogout}>Logout</Link>
               </li>
             </ul>
           </nav>

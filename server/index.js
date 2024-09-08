@@ -33,6 +33,7 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use('/api/user', require('./routes/user'));
 app.use('/api/products', require('./routes/products'));
 app.use('/api/admin', require('./routes/admin'));
+app.use('/api/contact', require('./routes/contact'));
 
 
 app.get('/', (req, res) => {

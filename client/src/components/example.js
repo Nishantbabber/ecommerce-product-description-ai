@@ -10,7 +10,7 @@ const ExamplesPage = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const exampleProducts = [
-        { id: 1, title: 'Stylish Jacket', description: 'A trendy jacket for all seasons.', category: 'Fashion', price: 2499, imageUrl: '/jacket.webp' },
+        { id: 1, title: 'Stylish Jacket', description: 'A trendy jacket for all seasons.', category: 'Fashion', price: 2499, imageUrl: '/Jacket.webp' },
         { id: 2, title: 'Smartphone', description: 'The latest smartphone with amazing features.', category: 'Electronics', price: 45999, imageUrl: '/Smartphone.webp' },
         { id: 3, title: 'Modern Sofa', description: 'A comfortable and stylish sofa for your living room.', category: 'Home Products', price: 15999, imageUrl: '/homeproduct.webp' },
         { id: 4, title: 'Luxury Skincare', description: 'High-quality skincare for glowing skin.', category: 'Beauty', price: 3999, imageUrl: 'Beauty.webp' },

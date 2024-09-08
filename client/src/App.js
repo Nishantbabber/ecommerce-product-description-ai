@@ -13,6 +13,7 @@ import AccountManagement from './components/userProfile'
 import AdminDashboard from './components/admin/adminDashboard';
 import Homepage from './components/homepage';
 import ExamplesPage from './components/example'
+import ContactUs from './components/contactus'
 
 
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/user-profile/" element={<AccountManagement />} />
           <Route path="/admin/*" element={<AdminDashboard />} />
           <Route path='/examples' element={<ExamplesPage/>} />
+          <Route path='/contactUs' element={<ContactUs/>} />
         </Routes>
         <ToastContainer position="top-center" autoClose={2000} hideProgressBar={false} closeOnClick pauseOnHover rtl={false} />
       </div>
