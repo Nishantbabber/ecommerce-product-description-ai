@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../styles/example.css';
 import { useNavigate } from 'react-router-dom';
 import Header from './header';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ExamplesPage = () => {
 
@@ -52,17 +54,29 @@ const ExamplesPage = () => {
             if (res.ok) {
                 // Product imported successfully
                 alert('Product imported successfully!');
+                showToast('Product imported successfully!', 'success');
                 navigate('/dashboard'); // Redirect to the dashboard after success
             } else {
                 const data = await res.json();
-                alert(data.msg || 'Failed to import product.');
+                showToast(data.msg || 'Failed to import product.', 'error');
+                navigate('/login'); // Redirect to the dashboard after success
             }
         } catch (error) {
-            alert('Error importing product. Please try again later.');
+            showToast('Error importing product. Please try again later.', 'error');
         }
 
         setIsSubmitting(false);
     };
+
+    const showToast = (message, type) => {
+        toast.dismiss(); // Dismiss any existing toasts
+        if (type === 'success') {
+          toast.success(message);
+        } else if (type === 'error') {
+          toast.error(message);
+        }
+      };
+    
 
     return (
         <>
