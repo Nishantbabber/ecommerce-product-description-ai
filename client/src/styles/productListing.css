@@ -163,6 +163,10 @@ body {
     background-color: #218838;
 }
 
+.add-product-button:hover {
+    background-color: #218838;
+}
+
 .buttons .delete-button {
     background-color: #dc3545;
 }

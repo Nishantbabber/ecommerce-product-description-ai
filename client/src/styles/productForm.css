@@ -57,7 +57,12 @@
 .product-form input[type="submit"] {
     background-color: #28a745;
     color: #fff;
+    cursor: pointer;
 }
+.product-form input[type="submit"]:hover {
+    background-color: #218838;
+}
+
 
 .product-form input[type="submit"]:disabled {
     background-color: #ccc;

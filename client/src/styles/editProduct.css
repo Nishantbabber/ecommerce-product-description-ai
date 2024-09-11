@@ -58,7 +58,13 @@
 .edit-form input[type="submit"] {
     background-color: #28a745;
     color: #fff;
+    cursor: pointer;
 }
+
+.edit-form input[type="submit"]:hover {
+    background-color: #218838;
+}
+
 
 .advanced-toggle {
     display: flex;
