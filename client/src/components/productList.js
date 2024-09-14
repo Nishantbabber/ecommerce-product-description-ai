@@ -50,7 +50,7 @@ const ProductList = () => {
             if (data.length === 1 && !localStorage.getItem('isFirstProductTourShown')) {
                 startTour();
                 localStorage.setItem('isFirstProductTourShown', 'true');
-            } 
+            }
         };
 
         fetchProducts();
@@ -236,7 +236,57 @@ const ProductList = () => {
     };
     function getCurrencySymbol(currencyCode) {
         return currencySymbols[currencyCode] || currencyCode; // Fallback to code if symbol not found
-    }        
+    }
+
+    const copyToClipboard = (description) => {
+        navigator.clipboard.writeText(description).then(() => {
+            showToast('Description copied to clipboard!', 'success');
+        }).catch(err => {
+            showToast('Failed to copy description', 'error');
+        });
+    };
+
+    const downloadTextFile = () => {
+        const textContent = products.map(product =>
+            `Product: ${product.title}\nDescription: ${product.description}\nPrice: ${product.price}\n\n`
+        ).join('\n');
+
+        const blob = new Blob([textContent], { type: 'text/plain;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', 'products.txt');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+    const downloadCSV = () => {
+        // Define the CSV headers
+        const headers = ['Product Name', 'Product Description', 'Product Price'];
+
+        // Map the products into CSV rows
+        const csvContent = products.map(product => {
+            const title = `"${product.title.replace(/"/g, '""')}"`;  // Escape double quotes in title
+            const description = `"${product.description.replace(/"/g, '""')}"`;  // Escape double quotes in description
+            const price = product.price ? `"${product.price}"` : '""';  // Ensure price is formatted or empty
+
+            return `${title},${description},${price}`;
+        }).join('\n');
+
+        // Add headers to the CSV content
+        const fullCsvContent = `${headers.join(',')}\n${csvContent}`;
+
+        // Create CSV Blob and initiate download
+        const blob = new Blob([fullCsvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', 'products.csv');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+    const hasMultipleProducts = products.length > 1;
 
     return (
         <div>
@@ -305,11 +355,22 @@ const ProductList = () => {
                                         <div className="edit-delete-buttons">
                                             <button className="edit-button" onClick={() => editProduct(product._id)}>Edit</button>
                                             <button className="delete-button" onClick={() => deleteProduct(product._id)}>Delete</button>
+                                            <button onClick={() => copyToClipboard(product.description)}>Copy to Clipboard</button>
                                         </div>
                                     </div>
                                 </div>
                             ))}
                         </div>
+                        {hasMultipleProducts && (
+                            <div className="download-buttons">
+                                <button onClick={downloadCSV}>
+                                    Download CSV
+                                </button>
+                                <button onClick={downloadTextFile}>
+                                    Download Text File
+                                </button>
+                            </div>
+                        )}
                         <div className="pagination">
                             <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
                                 Previous

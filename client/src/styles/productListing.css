@@ -310,7 +310,7 @@ body {
     margin: 0 5px;
     border: 1px solid #0056b3;
     border-radius: 4px;
-    background-color: #fff;
+    background-color: #e3e3e3;
     color: #0056b3;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -331,6 +331,30 @@ body {
     cursor: not-allowed;
 }
 
+.download-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+    cursor: pointer;
+}
+.download-buttons button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: 1px solid #0056b3;
+    border-radius: 4px;
+    background-color: #e3e3e3;
+    color: #0056b3;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.download-buttons button:hover {
+    background-color: #007bff;
+    color: white;
+}
 /* Loading overlay */
 .loading-overlay {
     position: fixed;
